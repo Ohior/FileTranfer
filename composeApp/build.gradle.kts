@@ -32,7 +32,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(libs.ktor.client.android)
+            implementation(libs.ktor.client.okhttp)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -44,15 +44,21 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            // Voyager
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.screenmodel)
+            // File picker
+            implementation("com.darkrockstudios:mpfilepicker:3.1.0")
             // Ktor
-            implementation(libs.ktor.server.core)
-            implementation(libs.ktor.server.cio)
+            val ktorServer = "2.3.11"
             implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation("io.ktor:ktor-server-core:$ktorServer")
+            implementation("io.ktor:ktor-server-cio:$ktorServer")
+//            implementation(libs.ktor.server.core)
+//            implementation(libs.ktor.server.cio)
+//            implementation(libs.ktor.client.content.negotiation)
+//            implementation(libs.ktor.serialization.kotlinx.json)
+            // include for Common module
+            implementation("org.jetbrains.kotlinx:kotlinx-html:0.11.0")
+            api("io.github.kevinnzou:compose-webview-multiplatform:1.9.12")
+            implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
         }
     }
 }
